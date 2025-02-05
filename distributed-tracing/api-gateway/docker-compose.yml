@@ -1,8 +1,9 @@
-version: "3.2"
 services:
   datadog-agent:
     environment:
       - DD_API_KEY
+      - DD_SITE
+      - DD_HOSTNAME
       - DD_APM_ENABLED=true
     image: 'datadog/agent'
     volumes:
@@ -57,3 +58,5 @@ services:
     build:
       context: quotes-db
       dockerfile: Dockerfile-postgres
+    environment:
+      - POSTGRES_HOST_AUTH_METHOD=trust
